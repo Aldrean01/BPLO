@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             $_SESSION['username'] = $row['username'];
             $_SESSION['success'] = "You have logged in!";
             echo "<script>alert('Login Successfully!')</script>";
-            header('location:user_index.php');
+            header('location:addnewuser.php');
         }
         
     }else{

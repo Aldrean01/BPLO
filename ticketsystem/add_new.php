@@ -6,17 +6,18 @@ if(isset($_POST["submit"])) {
     $username = $_POST['username'];
     $sdate = $_POST['sdate'];
     $issue = $_POST['issue'];
-    $msg = $_POST['msg'];
+    $comment = $_POST['comment'];
+    $status = "Pending";
 
-    $sql = "INSERT INTO `ticketing`(`id`, `username`, `sdate`, `issue`, `msg`) 
-    VALUES (NULL,'$username','$sdate','$issue','$msg')";
+    $sql = "INSERT INTO `ticketing`(`id`, `username`, `sdate`, `issue`, `comment`,`status`) 
+    VALUES (NULL, '$username','$sdate','$issue','$comment','$status')";
 
     $result = mysqli_query($conn, $sql);
 
 
 
     if($result) {
-        header("location: index.php?msg=New record  created successfully");
+        header("location:admin-index.php?msg=New record  created successfully");
     }
     else{
         echo "failed " . mysql_error($conn);
@@ -101,7 +102,7 @@ if(isset($_POST["submit"])) {
 
             <div class="form-btn">
                 <button type="submit" class="btn btn-success" name="submit">SUBMIT</button>
-                <a href="user_index.php" class="btn btn-danger">Cancel</a>
+                <a href="admin-index.php" class="btn btn-danger">Cancel</a>
             </div>
             </form>
         </div>

@@ -78,127 +78,125 @@
                  <!--TABLE -->      
  
                 <!-- Content -->
-        <div id="content"> 
-            <div class="data bg-smokewhite">
-            <form action="" method="post" ><br>
-            <?php 
-            $id = $_GET['id'];
-            $sql = "SELECT * FROM ticketing WHERE id = '$id' LIMIT 1";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            ?>
-            <h1>Ticket Report</h1>
-            <form action="" method="post" ><br>
-
-            <div class="col mb-3">
-                <div class="col">
-                    <label class="form-lebel">UserName</label>
-                    <input type="text" class="form-control" name="username"
-                   value="<?php  echo $row['username']?>">
-                </div>
-            </div>
-
-            <div class="col">
-                    <label class="form-lebel">Request Date</label>
-                    <input type="date" class="form-control" name="sdate"
-                    value="<?php  echo $row['sdate']?>">
-            </div><br>
-
-        
-            <div class="form-group mb-3">
-                <label>Support Type:</label>
-                    <input type="text" value="<?php  echo $row['issue']?>">
-            </div>  
-
-            <div class="form-comment mb-3">
-                <label class="form-comments" >Problem Description :</label><br>
-                <textarea type="text" class="form-control" id="4" cols="55" rows="4" name="comment"><?php  echo $row['comment']?></textarea>
-            </div>
-            
-            <div class="form-group mb-3">
-                <label>Select Status:</label>
-                    <select name="status">
-                    <option value="Done" <?php  echo ($row['issue']=='In Progress')? "checked":"";?>>Done</option>
-                        <option value="Cancelled" <?php  echo ($row['issue']=='Pending')? "checked":"";?>>Cancelled</option>
-                    </select>
-            </div>  
-
-
-            <p class="text-muted">(It Fix The Ticket)</p>
-            <div class="col">
-                    <label class="form-name"> Tech Name</label>
-                    <input type="text" class="form-control" name="adminfix"
-                    value="<?php  echo $row['adminfix']?>">
-                </div>
-                <div class="form-comment mb-3">
-                <label class="form-comments" >Feedback:</label><br>
-                <textarea type="text" class="form-control" id="4" cols="55" rows="4" name="feedback" placeholder="Enter your Solution"><?php  echo $row['feedback']?></textarea>
-            </div>
-            <div class="form-btn content">
-                <a class="btn btn-danger" onclick="history.go(-1);">Back</a>
-            </div>
-                <br>
-            </div>
-            </form>
-                    </div>
-                </div>
-
-    <div class="report bg-white">
-        <div>
-            <h2>Technician Report Image</h2>
-            <form method='post' action='#' enctype='multipart/form-data'>
-            <div class="form-group"><br>
-                <label for="">Upload The Image</label>
-                <input class="form-control" type="file" name="ticketing" id="file" multiple required>
-            </div> 
-        
-    
-            <?php
-            if(isset($_POST['save'])){
-            $id = $_GET['id'];
-            $filename = $_FILES['ticketing']['name'];
-
-            // Select file type
-            $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
-
-            // valid file extensions
-            $extensions_arr = array("jpg","jpeg","png","gif");
-
-            // Check extension
-            if( in_array($imageFileType,$extensions_arr) ){
-
-            // Upload files and store in database
-            if(move_uploaded_file($_FILES["ticketing"]["tmp_name"],'upload/'.$filename)){
-                // Image db insert sql
-                $insert = "UPDATE `ticketing` SET `photo`='$filename' WHERE id=$id";
-                if(mysqli_query($conn, $insert)){
-                echo '<h3>Data Inserted Successfully</h3>';
-                }
-                else{
-                echo 'Error: '.mysqli_error($conn);
-                }
-            }else{
-                echo 'Error in uploading file - '.$_FILES['ticketing']['name'].'<br/>';
-            }
-            }
-            } 
-            ?>
-            <div id="display-image">
-            <?php
+        <div class="content" id="content"> 
+            <div class="detail bg-smokewhite">
+                <h1>Ticket Report</h1>
+                <form action="" method="post" >
+                <?php 
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM `ticketing` WHERE `id` = '$id' LIMIT 1";
+                $sql = "SELECT * FROM ticketing WHERE id = '$id' LIMIT 1";
                 $result = mysqli_query($conn, $sql);
-                while ($data = mysqli_fetch_assoc($result)) {
-            ?>
-                <img src="./upload/<?php echo $data['photo']; ?>">
-        
-            <?php
-                }
-            ?>
-            </div><br>
-            </form>
-        </div>
-        </div>
+                $row = mysqli_fetch_assoc($result);
+                ?>
+                <form action="" method="post" >
+                    <div class="col mb-3">
+                        <div class="col">
+                            <label class="form-lebel">UserName</label>
+                            <input type="text" class="form-control" name="username"
+                        value="<?php  echo $row['username']?>">
+                        </div>
+                    </div>
+
+                    <div class="col">
+                            <label class="form-lebel">Request Date</label>
+                            <input type="date" class="form-control" name="sdate"
+                            value="<?php  echo $row['sdate']?>">
+                    </div><br>
+
+                
+                    <div class="col-group mb-3">
+                        <label>Support Type:</label>
+                            <input type="text" value="<?php  echo $row['issue']?>">
+                    </div>  
+
+                    <div class="col-comment mb-3">
+                        <label class="form-comments" >Problem Description :</label><br>
+                        <textarea type="text" class="form-control" id="4" cols="55" rows="4" name="comment"><?php  echo $row['comment']?></textarea>
+                    </div>
+                    
+                    <div class="col-group mb-3">
+                        <label>Select Status:</label>
+                            <select name="status">
+                            <option value="Done" <?php  echo ($row['issue']=='In Progress')? "checked":"";?>>Done</option>
+                                <option value="Cancelled" <?php  echo ($row['issue']=='Pending')? "checked":"";?>>Cancelled</option>
+                            </select>
+                    </div>  
+
+
+                    <p class="text-muted">(I.T Fix The Ticket)</p>
+                    <div class="col">
+                            <label class="form-name"> Tech Name</label>
+                            <input type="text" class="form-control" name="adminfix"
+                            value="<?php  echo $row['adminfix']?>">
+                    </div>
+                    <div class="col-comment mb-3">
+                        <label class="form-comments" >Feedback:</label><br>
+                        <textarea type="text" class="form-control" id="4" cols="55" rows="4" name="feedback" placeholder="Enter your Solution"><?php  echo $row['feedback']?></textarea>
+                    </div>
+                    <div class="col-btn content">
+                        <a class="btn btn-danger" onclick="history.go(-1);">Back</a>
+                    </div>
+                        <br>
+                    </div>
+                </form>
+                </div>
+            </div>
+
+            <div class="report bg-smokewhite">
+                <div>
+                    <h2>Technician Report Image</h2>
+                    <form method='post' action='#' enctype='multipart/form-data'>
+                    <div class="form-group"><br>
+                        <label for="">Upload The Image</label>
+                    </div> 
+                
+            
+                    <?php
+                    if(isset($_POST['save'])){
+                    $id = $_GET['id'];
+                    $filename = $_FILES['ticketing']['name'];
+
+                    // Select file type
+                    $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
+
+                    // valid file extensions
+                    $extensions_arr = array("jpg","jpeg","png","gif");
+
+                    // Check extension
+                    if( in_array($imageFileType,$extensions_arr) ){
+
+                    // Upload files and store in database
+                    if(move_uploaded_file($_FILES["ticketing"]["tmp_name"],'upload/'.$filename)){
+                        // Image db insert sql
+                        $insert = "UPDATE `ticketing` SET `photo`='$filename' WHERE id=$id";
+                        if(mysqli_query($conn, $insert)){
+                        echo '<h3>Data Inserted Successfully</h3>';
+                        }
+                        else{
+                        echo 'Error: '.mysqli_error($conn);
+                        }
+                    }else{
+                        echo 'Error in uploading file - '.$_FILES['ticketing']['name'].'<br/>';
+                    }
+                    }
+                    } 
+                    ?>
+                    <div id="display-image">
+                    <?php
+                        $id = $_GET['id'];
+                        $sql = "SELECT * FROM `ticketing` WHERE `id` = '$id' LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                        while ($data = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <img src="./upload/<?php echo $data['photo']; ?>">
+                
+                    <?php
+                        }
+                    ?>
+                    </div><br>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-green">
@@ -213,7 +211,6 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-            <script src="js/delete.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>

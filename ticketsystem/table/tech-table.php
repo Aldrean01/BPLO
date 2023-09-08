@@ -76,7 +76,7 @@
                         <th class="text-center"><?php echo $row['sdate'] ?></th>
                         <th>
                             <a class="btn btn-primary" href="admin-ticket.php?id=<?php echo $row['id']?>" class = "text-light">Open</a>
-                            <a class="btn btn-danger" href="admin-delete.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure to delete?')">Delete</a>                         
+                            <a class="btn btn-danger" href="admin-delete-data.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure to delete?')">Delete</a>                         
                         </th>
                     
                         </tr>

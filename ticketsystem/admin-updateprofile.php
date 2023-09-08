@@ -13,7 +13,7 @@ if(isset($_POST["submit"])) {
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     $sql = "UPDATE `account` SET `username`='$username',`fullname`='$fullname',`email`='$email',`password`='$password' 
     WHERE id='$id'";
@@ -74,7 +74,7 @@ if(isset($_POST["submit"])) {
             <p class="text-muted">Click update after changing any Information</p>
         </div>
         <?php 
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $sql = "SELECT * FROM account WHERE id = '$id' LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);

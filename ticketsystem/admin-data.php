@@ -76,7 +76,7 @@
                     <div class="filters" id="filters">
                 <ul class="nav">
                     <li>
-                        <a type="button " href="add_new.php" class="btn btn-success mb-3" data-toggle="modal" onclick="openModal()">Add Tickets</a>
+                        <a type="button " href="addnewuser.php" class="btn btn-success mb-3" data-toggle="modal" onclick="openModal()">Add Tickets</a>
                         <a class="btn btn-success" href="admin-status.php">Tickets</a>
                     <form class="form-inline"  style="background-color:#37474F;" method="POST" action="">
                     <div>

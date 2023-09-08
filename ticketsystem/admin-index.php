@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/stylesheet.css"/>
-    
+    <link rel="stylesheet" href="css/output.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
@@ -124,7 +124,122 @@
                         <a class="btn btn-success" style="float: left;" href="admin-data.php">My Tickets</a>
                         <input class="col mb-2"  style="float: right;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
                         </div>
+                        <br>
+                        <br>
+                        <div class="data">
+                            <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-file-text fa-4x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                            <div class='huge'>
+                                                <?php
+                                                    include "database/db_conn.php";
+                                                    $result = "SELECT * from ticketing";
+                                                    $row = mysqli_query($conn, $result);
 
+                                                    if($total = mysqli_num_rows($row))
+                                                    {
+                                                        echo '<h4>'.$total.' </h4>';
+                                                    }
+                                                    else {
+                                                        echo '<h4>No Data</h4>';
+                                                    }
+                                                ?>
+                                            </div>
+                                                    <div class="under-number">Tickets</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="admin-index.php">
+                                            <div class="panel-footer">
+                                                <span class="pull-left blue">View Details</span>
+                                                <span class="pull-right blue"><i class="fa fa-arrow-circle-right"></i></span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-comment fa-4x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class='huge'>
+                                                <?php
+                                                    include "database/db_conn.php";
+                                                    $pending = 'Pending';
+                                                    $result = "SELECT * from ticketing where `status`='$pending'";
+                                                    $row = mysqli_query($conn, $result);
+
+                                                    if($total = mysqli_num_rows($row))
+                                                    {
+                                                        echo '<h4>'.$total.' </h4>';
+                                                    }
+                                                    else {
+                                                        echo '<h4>No Data</h4>';
+                                                    }
+                                                ?>
+
+                                                </div>
+                                                <div class="under-number">Pendings</div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <a href="admin-status.php">
+                                        <div class="panel-footer">
+                                            <span class="pull-left blue">View Details</span>
+                                            <span class="pull-right blue"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-user fa-4x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                        <div class='huge'>
+                                                <?php
+                                                    include "database/db_conn.php";
+                                                    $result = "SELECT * from account";
+                                                    $row = mysqli_query($conn, $result);
+
+                                                    if($total = mysqli_num_rows($row))
+                                                    {
+                                                        echo '<h4>'.$total.' </h4>';
+                                                    }
+                                                    else {
+                                                        echo '<h4>No Data</h4>';
+                                                    }
+                                                ?>
+                                        </div>
+                                                <div class="under-number">User</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="admin-accounts.php">
+                                        <div class="panel-footer">
+                                            <span class="pull-left blue">View Details</span>
+                                            <span class="pull-right blue"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <table class="table text-center" id="my-table">
                         <thead class="title text-center" style="color:whitesmoke">
@@ -137,8 +252,6 @@
                             <th class="text-center" scope="col">Request Date</th>
                             <th class="text-center" scope="col">Admin Fix</th>
                             <th class="text-center" scope="col">Date Created</th>
-
-                            
                         </tr>
                         </thead>
                         <tbody id="myTable">

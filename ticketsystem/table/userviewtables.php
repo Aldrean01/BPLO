@@ -35,22 +35,22 @@
             <a class="btn btn-primary" href="user-view.php?id=<?php echo $row['id']?>" class = "text-light">View</a>
         </td>
         </tr>
-<?php
-			}
-		}else{
-			echo'
-			<tr>
-				<td colspan = "4"><center>Record Not Found</center></td>
-			</tr>';
-		}
-	}else{
-		$id = $_SESSION['username'];
-                            $sql = "SELECT * FROM ticketing where username ='$id'";
-                            $r = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_assoc($r))
-                            {
-?>
-	<tr>
+            <?php
+                        }
+                    }else{
+                        echo'
+                        <tr>
+                            <td colspan = "4"><center>Record Not Found</center></td>
+                        </tr>';
+                    }
+                }else{
+                    $id = $_SESSION['username'];
+                                        $sql = "SELECT * FROM ticketing where username ='$id'";
+                                        $r = mysqli_query($conn, $sql);
+                                        while ($row = mysqli_fetch_assoc($r))
+                                        {
+            ?>
+	    <tr>
         <th class="text-center"><?php echo $row['id'] ?></th>
         <th class="text-center"><?php echo $row['username'] ?></th>
         <th class="text-center"><?php echo $row['issue'] ?></th>

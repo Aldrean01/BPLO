@@ -208,10 +208,8 @@
             }
             </script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-            <script src="js/delete.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-            <script src="vendor/jquery/jquery-1.11.2.min.js" type="text/javascript"></script>
-		    <script src="vendor/DataTables/datatables.min.js" type="text/javascript"></script> 
+            <script src="vendor/jquery/jquery-1.11.2.min.js" type="text/javascript"></script> 
 
 
 </body>

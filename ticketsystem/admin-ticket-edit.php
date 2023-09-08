@@ -106,7 +106,7 @@ if(isset($_POST["submit"])) {
  
                 <!-- Content -->
         <div id="content"> 
-            <div class="data bg-smokewhite">
+            <div class="detail bg-smokewhite">
             <form action="" method="post" ><br>
             <?php 
             $id = $_GET['id'];

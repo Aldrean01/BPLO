@@ -36,8 +36,6 @@ h2, h3, a {
 	text-align: center;
 	display: initial;
   color: white;
-  
-
 }
 
 .main-nav a {
@@ -117,7 +115,7 @@ h2, h3, a {
   text-align: center;
 }
 form{
-  margin: 30px;
+  margin: 20px;
   text-align: center;
   background-color: whitesmoke;
 }
@@ -729,3 +727,10 @@ th {
 
 }
 
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+}

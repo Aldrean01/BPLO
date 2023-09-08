@@ -13,7 +13,8 @@ if(isset($_POST["submit"])) {
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
+
 
     $sql = "UPDATE `account` SET `username`='$username',`fullname`='$fullname',`email`='$email',`password`='$password' 
     WHERE id='$id'";
@@ -114,7 +115,7 @@ if(isset($_POST["submit"])) {
             <div class="form mb-3">
                 <div class="col">
                     <label class="form-lebel">Confirm Passsword</label>
-                    <input type="text" class="form-control" name="password" placeholder="New Password">
+                    <input type="text" class="form-control" name="password" placeholder="New Password" required>
                 </div>
             </div> 
             

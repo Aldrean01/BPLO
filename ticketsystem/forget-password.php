@@ -20,13 +20,13 @@
             $error .="<p>Invalid email address please type a valid email address!</p>";
             }else{
             $sel_query = "SELECT * FROM `account` WHERE email='".$email."'";
-            $results = mysqli_query($con,$sel_query);
+            $results = mysqli_query($conn,$sel_query);
             $row = mysqli_num_rows($results);
             if ($row==""){
             $error .= "<p>No user is registered with this email address!</p>";
             }
             }
-            if($error!=""){
+            if($error=""){
             echo "<div class='error'>".$error."</div>
             <br /><a href='javascript:history.go(-1)'>Go Back</a>";
             }else{
@@ -38,7 +38,7 @@
             $addKey = substr(md5(uniqid(rand(),1)),3,10);
             $key = $key . $addKey;
             // Insert Temp Table
-            mysqli_query($con,
+            mysqli_query($conn,
             "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
             VALUES ('".$email."', '".$key."', '".$expDate."');");
 

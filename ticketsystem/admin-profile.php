@@ -2,7 +2,7 @@
 <?php
 	session_start();
 	if(!ISSET($_SESSION['id'])){
-		header('location:index.php');
+		header('location:login.php');
 	}
 ?>
 <html lang="en">
@@ -34,21 +34,25 @@
 
 
 <body>
-<header class="header">
+    <header class="header">
 		<h1 class="logo">
-            <a href="admin-index.php"><i class="fa fa-ticket" style="font-size25px;color:red"></i> Ticketing Tab</a>
+            <a href="user_index.php"><i class="fa fa-ticket" style="font-size25px;color:red"></i> Ticketing Tab</a>
         </h1>
         <ul class="main-nav">
           <li><a href="admin-index.php">Home</a></li>
-          <li><a href="admin-profile.php">Profile</a></li>
-          <li><a href="admin-accounts.php">accounts</a></li>
-          <li><a href="admin-status.php">tickets</a></li>
+          <li><a href="admin-profile.php">profile</a></li>
+          <li><a href="admin-myticket.php">my ticket</a></li>
           <li><a href="logout.php" class="btn fa fa-sign-out"></a></li>
-        </ul>
+        </ul> 
     
         
 
     </header> 
+            <?php 
+                require "database/db_conn.php";
+                $query = mysqli_query($conn, "SELECT * FROM `account` WHERE `username`='$_SESSION[username]'") or die(mysqli_error());
+                while ($row = mysqli_fetch_array($query)){
+            ?>
     <div class="list">
         <div class="viewport" id="viewport">
                 <!-- Sidebar -->
@@ -57,21 +61,14 @@
                     <div class="text-center mt-3">
                 <ul class="nav">
                     <li>
-                    <a class="btn btn-success" href="admin-index.php">Home</a>
-                    <a class="btn btn-success mt-3 " href="admin-updateprofile.php?id=<?php echo $_SESSION['id']?>">Update Profile</a>
-                    <a class="btn btn-success" href="admin-data.php">My Tickets</a>
+                    <a  type="button" class="btn btn-success" href="admin-index.php">Home</a>
+                    <a   type="button" class="btn btn-success" href="admin-updateprofile.php?id=<?php echo $_SESSION['username']?>">Update Profile</a>
                     <a class="btn btn-success" onclick="history.go(-1);">Back </a>
                     </li>
-                </ul>   
+                </ul>
                     
                 </div> 
         </div>
-        <?php 
-
-                require "database/db_conn.php";
-                $query = mysqli_query($conn, "SELECT * FROM `account` WHERE `id`='$_SESSION[id]'") or die(mysqli_error());
-                while ($row = mysqli_fetch_array($query)){
-            ?>
                 <!-- Content -->
                 <div id="content"> 
                     <div class="container-fluid">
@@ -121,8 +118,6 @@
                     <?php
                 }
                 ?> 
-
-
                 </form>
                         </div>
                     </div>

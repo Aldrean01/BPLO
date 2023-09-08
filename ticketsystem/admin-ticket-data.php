@@ -11,7 +11,7 @@ include "database/db_conn.php";
 $id = $_GET['id'];
 if(isset($_POST["submit"])) {
     $adminfix = $_POST['adminfix'];
-    $status = "In Progress";
+    $status = "In progress";
 
     $sql = "UPDATE `ticketing` SET `adminfix`='$adminfix', `status`='$status'
     WHERE id=$id";
@@ -76,8 +76,7 @@ if(isset($_POST["submit"])) {
           <li><a href="admin-index.php">Home</a></li>
           <li><a href="admin-profile.php">Profile</a></li>
           <li><a href="admin-accounts.php">accounts</a></li>
-          <li><a href="admin-status.php">tickets</a>
-          </li>
+          <li><a href="admin-status.php">tickets</a></li>
           <li><a href="logout.php" class="btn fa fa-sign-out"></a></li>
         </ul>
     
@@ -87,22 +86,24 @@ if(isset($_POST["submit"])) {
      
     <div class="list">
         <div class="viewport" id="viewport">
+            
                 <!-- Sidebar -->
                 <div  class="sidebar" id="sidebar">
                 <header>
                     <a href="">HOME</a>
                     </header>
-                    <ul class="nav">
-                    <li>
-                        <a class="btn btn-success" href="admin-data.php">My Tickets</a>
+                    <ul class="nav mr-6">
+                    <li style="margin-left: 10px;">
                         <a type="button " href="add_new.php" class="btn btn-success mb-3" data-toggle="modal" onclick="openModal()">Add Tickets</a>
+                        <a class="btn btn-success" href="admin-data.php">Tickets</a>
                         <a class="btn btn-success" onclick="history.go(-1);">Back </a>
-                    </ul> 
-                    </form>
+                    <div class="filters" id="filters">
+                    </div>
                     </div>
 
                  <!--TABLE -->      
                 <!-- Content -->
+                
         <div class="tickcontainer" id="content"> 
             <?php 
             $id = $_GET['id'];
@@ -175,12 +176,11 @@ if(isset($_POST["submit"])) {
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-            <script src="js/delete.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-            <script src="https://cdn.datatables.net/datetime/1.4.1/js/dataTables.dateTime.min.js"></script>
-            <script src="js/filterdate.js"></script>
+
+
 
 
 </body>
