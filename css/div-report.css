@@ -1,0 +1,44 @@
+.content{
+    justify-content: space-between;
+}
+
+.report {
+    position: flex;
+    width: 1200px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    margin-right: 13px;
+    border: 3px solid #37474F;
+    border-radius: 5px;
+}
+.report-image {
+    padding: 160px;
+    justify-content: center;
+}
+
+.report form {
+    padding: 0px;
+}
+
+.detail {
+    border: 5px ;
+    width: 1200px;
+    position: flex;
+    margin: 5px auto;
+    margin-left: 19px;
+    border: 3px solid #37474F;
+    border-radius: 5px;
+
+}
+
+.content .detail form {
+    padding: 10px 400px;
+    justify-content: space-between;
+    display: block;
+    align-items: center;
+}
+
+.content p {
+    font-size: large;
+}

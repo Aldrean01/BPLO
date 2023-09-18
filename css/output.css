@@ -1,0 +1,26 @@
+.data {
+    grid-row: auto ;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+.allticket {
+    padding: 10px 50px;
+    background-color: #4cae4c;
+    border-radius: 5px;
+}
+
+.allpending {
+    padding: 20px 50px;
+    background-color: #4cae4c;
+    border-radius: 5px;
+    grid-column-end: auto;
+}   
+
+.allcomplete {
+    padding: 10px 50px;
+    background-color:  #4cae4c;
+    border-radius: 5px;
+    font-style: white;
+}
